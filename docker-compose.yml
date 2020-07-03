@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./api
+    networks:
+      - custom_network
+    ports:
+      - 3000:3000
+    environment:
+      DB_HOST: db
+      DB_PORT: 27017
+      DB_NAME: usermanagementdb
+    depends_on:
+      - db
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - 8080:8080
+
+  db:
+    image: mongo:4.1.8-xenial
+    container_name: db
+    networks:
+      - custom_network
+    ports:
+      - 27017:27017
+    volumes:
+      - db:/data/db
+
+networks:
+  custom_network:
+
+volumes:
+  db:
+  node_modules:

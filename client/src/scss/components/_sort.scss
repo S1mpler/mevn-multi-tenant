@@ -1,0 +1,14 @@
+.sort {
+  color: gray-color(200);
+  transform: rotate3d(0, 0, 1, 0);
+  transform-origin: center;
+  transition: $transition-base;
+
+  &.is-active {
+    color: theme-color(dark);
+  }
+
+  &.is-desc {
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+}

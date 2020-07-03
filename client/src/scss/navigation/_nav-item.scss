@@ -1,0 +1,33 @@
+%nav-item {
+  &:focus {
+    outline: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &:not(:last-child) {
+      border-bottom: 1px solid gray-color(200);
+    }
+  }
+}
+
+%nav-anchor {
+  color: theme-color(dark);
+  transition: $transition-base;
+
+  &:hover,
+  &.is-active {
+    color: theme-color(primary);
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem($spacing-xs) 0;
+  }
+}

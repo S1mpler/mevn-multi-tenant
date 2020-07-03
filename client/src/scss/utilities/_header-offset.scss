@@ -1,0 +1,7 @@
+.header-offset {
+  padding-top: rem($spacing-base);
+
+  @include media-breakpoint-up(md) {
+    padding-top: rem($spacing-base * 3);
+  }
+}

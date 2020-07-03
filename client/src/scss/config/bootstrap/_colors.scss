@@ -1,0 +1,31 @@
+/* stylelint-disable */
+$white: #fff;
+$black: #414141;
+
+$colors: (
+  blue: #1f8eca,
+  red: #dc3545,
+  orange: #fd7e14,
+  green: #55c400,
+  dark-blue: #2276a6,
+);
+
+$theme-colors: (
+  primary: color(blue),
+  secondary: color(green),
+  success: color(green),
+  info: color(blue),
+  warning: color(orange),
+  danger: color(red),
+  light: $white,
+  dark: $black,
+);
+
+$grays: (
+  50: #999,
+  100: #ccc,
+  200: #ddd,
+  300: #f1f4f8,
+  400: #f8f8f8,
+);
+/* stylelint-enable */

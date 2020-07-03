@@ -1,0 +1,17 @@
+.tabs {
+  @extend %list-unstyled;
+
+  display: flex;
+  bottom: 0;
+  justify-content: flex-start;
+
+  &__item {
+    padding: rem($spacing-xxs) 0;
+    cursor: pointer;
+
+    &.is-active {
+      color: theme-color(primary);
+      border-bottom: 1px solid theme-color(primary);
+    }
+  }
+}

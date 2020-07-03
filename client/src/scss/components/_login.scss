@@ -1,0 +1,47 @@
+.login {
+  display: flex;
+  align-items: center;
+  padding: rem($spacing-xl) 0;
+
+  &__image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    object-fit: cover;
+
+    @include media-breakpoint-up(md) {
+      width: 70%;
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: 65%;
+    }
+  }
+
+  &__card {
+    padding: rem($spacing-l);
+    background-color: theme-color(light);
+    border-radius: rem($border-radius);
+  }
+
+  &__sign {
+    max-width: rem(100px);
+    margin-bottom: rem($spacing-xl);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: rem($spacing-s);
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

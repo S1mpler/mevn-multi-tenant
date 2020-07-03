@@ -1,0 +1,35 @@
+.pagination {
+  @extend %list-unstyled;
+
+  display: flex;
+  margin: rem($spacing-l) 0;
+  color: theme-color(primary);
+
+  .page-link {
+    padding: rem($spacing-xxs);
+    color: inherit;
+    user-select: none;
+  }
+
+  .page-item {
+    margin: 0 rem($spacing-xxs);
+
+    /* stylelint-disable */
+    &.disabled .page-link {
+      color: gray-color(200);
+      text-decoration: none;
+      cursor: not-allowed;
+    }
+
+    &.active .page-link {
+      color: theme-color(light);
+      background-color: theme-color(primary);
+      border-radius: rem($border-radius);
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    /* stylelint-enable */
+  }
+}

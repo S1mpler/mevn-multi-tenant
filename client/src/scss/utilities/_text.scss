@@ -1,0 +1,15 @@
+.text-regular {
+  font-family: $font-family-sans-serif;
+}
+
+.text-bold {
+  font-family: $headings-font-family;
+}
+
+.text-gray {
+  color: gray-color(50);
+}
+
+.text-italic {
+  font-style: italic;
+}

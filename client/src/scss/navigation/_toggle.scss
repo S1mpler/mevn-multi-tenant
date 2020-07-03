@@ -1,0 +1,27 @@
+%toggle {
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    position: relative;
+    width: rem($header-mobile-height);
+    height: rem($header-mobile-height);
+    align-items: center;
+    justify-content: center;
+    color: theme-color(primary);
+    cursor: pointer;
+    transition: $transition-base;
+
+    &::after {
+      position: absolute;
+      top: rem(15px);
+      right: 0;
+      width: 1px;
+      height: rem(40px);
+      content: '';
+      background-color: gray-color(400);
+    }
+
+    &.is-active {
+      background-color: gray-color(400);
+    }
+  }
+}

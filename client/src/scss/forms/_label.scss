@@ -1,0 +1,20 @@
+label {
+  margin-bottom: rem($spacing-xxs);
+  font-family: $headings-font-family;
+
+  &[required] {
+    &::after {
+      color: theme-color(primary);
+      content: ' *';
+    }
+  }
+}
+
+.label {
+  &--required {
+    &::after {
+      color: theme-color(primary);
+      content: ' *';
+    }
+  }
+}

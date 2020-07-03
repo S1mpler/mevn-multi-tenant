@@ -1,0 +1,88 @@
+.accordion {
+  width: 100%;
+  overflow-y: hidden;
+  background: theme-color(light);
+  border-radius: $border-radius;
+
+  &__base {
+    display: flex;
+    justify-content: space-between;
+    padding: rem($spacing-s);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__title {
+    @include get-font-size(h6);
+
+    color: theme-color(dark);
+  }
+
+  &__arrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: theme-color(dark);
+
+    // We have to rotate here, because Safari can't animate svg with max-height
+    .icon {
+      transform: rotate(-90deg);
+      transition: $transition-base;
+
+      &.is-active {
+        transform: rotate(0);
+      }
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    padding: 0 rem($spacing-base) 0 rem($spacing-base);
+    overflow-y: hidden;
+    opacity: 0;
+    transition: $transition-base;
+  }
+
+  &--expanded {
+    > .accordion__content {
+      max-height: rem(1200px);
+      padding: 0 rem($spacing-base) rem($spacing-base) rem($spacing-base);
+      opacity: 1;
+    }
+
+    .accordion__title,
+    .accordion__arrow {
+      color: theme-color(primary);
+    }
+  }
+
+  .accordion {
+    border: 1px solid gray-color(200);
+
+    > .accordion__content {
+      padding: 0 rem($spacing-s) 0 rem($spacing-s);
+    }
+
+    .accordion__title,
+    .accordion__arrow {
+      color: theme-color(dark);
+    }
+
+    .accordion__title {
+      @include get-font-size(body);
+    }
+
+    &--expanded {
+      border: 1px solid theme-color(primary);
+
+      .accordion__content {
+        padding: 0 rem($spacing-s) rem($spacing-s) rem($spacing-s);
+      }
+
+      .accordion__title,
+      .accordion__arrow {
+        color: theme-color(primary);
+      }
+    }
+  }
+}

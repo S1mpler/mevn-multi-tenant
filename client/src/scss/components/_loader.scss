@@ -1,0 +1,48 @@
+@import 'essentials';
+
+.loader {
+  display: none;
+  height: 100%;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+
+  &--full-size {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &.is-active {
+    display: flex;
+  }
+
+  &::after {
+    display: inline-block;
+    width: rem(46px);
+    height: rem(46px);
+    margin: 1px;
+    content: '';
+    border: rem(4px) solid theme-color(primary);
+    border: {
+      color: theme-color(primary) transparent theme-color(primary) transparent;
+      radius: 50%;
+    }
+
+    animation: loader 1.2s linear infinite;
+  }
+
+  &__message {
+    padding: rem(20px) 0;
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

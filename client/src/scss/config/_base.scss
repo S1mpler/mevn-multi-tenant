@@ -1,0 +1,22 @@
+// Custom base config
+
+$img-path: '/assets/img/'; // background-image: img-path('image.jpg');
+$section-max-value: 100; // this will result in a max margin/padding of 100 pixels;
+
+// spacing
+$spacing-xxs: 5px;
+$spacing-xs: 10px;
+$spacing-s: 20px;
+$spacing-base: 30px;
+$spacing-l: 40px;
+$spacing-xl: 50px;
+
+// border
+$border-width: 1px;
+$border-radius: 5px;
+
+// header heights
+$header-mobile-height: 70px;
+$header-desktop-height: 90px;
+
+$small-font-size: 14px;

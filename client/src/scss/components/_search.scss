@@ -1,0 +1,8 @@
+.search {
+  @extend %toggle;
+}
+
+.search-wrapper {
+  @extend %navigation-wrapper;
+  @extend %navigation-wrapper-fw;
+}

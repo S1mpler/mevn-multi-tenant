@@ -1,0 +1,11 @@
+.contact-info {
+  &__item {
+    display: block;
+    padding-bottom: rem($spacing-s);
+
+    &:not(:first-child) {
+      padding-top: rem($spacing-s);
+      border-top: 1px solid gray-color(200);
+    }
+  }
+}

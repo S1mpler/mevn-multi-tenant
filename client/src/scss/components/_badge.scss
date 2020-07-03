@@ -1,0 +1,15 @@
+.badge {
+  @include get-font-size(body);
+
+  display: flex;
+  min-width: rem($spacing-base);
+  height: rem($spacing-base);
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  &--red {
+    color: theme-color(light);
+    background: theme-color(danger);
+  }
+}

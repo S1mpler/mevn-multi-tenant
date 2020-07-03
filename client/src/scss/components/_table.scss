@@ -1,0 +1,113 @@
+.table {
+  position: relative;
+  overflow-x: auto;
+
+  table {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  th {
+    @include get-font-size(body);
+
+    padding: rem($spacing-xs) rem($spacing-s);
+    font: {
+      family: $headings-font-family;
+      weight: normal;
+    }
+  }
+
+  th,
+  td {
+    padding: rem($spacing-xs) rem($spacing-xs);
+    white-space: nowrap;
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        border-radius: 6px;
+        background-color: #ddd;
+        cursor: pointer;
+      }
+    }
+
+    td {
+      &:first-child {
+        padding-left: rem($spacing-l);
+      }
+
+      &:last-child {
+        padding-right: rem($spacing-l);
+      }
+    }
+  }
+
+  thead {
+    th {
+      &:first-child {
+        padding-left: rem($spacing-l);
+      }
+
+      &:last-child {
+        padding-right: rem($spacing-l);
+      }
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    border-bottom: {
+      right-radius: rem($border-radius);
+      left-radius: rem($border-radius);
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      width: rem($spacing-xl * 2);
+      max-width: 0;
+      pointer-events: none;
+      content: '';
+      transition-duration: 0.2s;
+    }
+
+    &::before {
+      left: 0;
+      background: linear-gradient(
+        to left,
+        rgba(theme-color(light), 0) 0%,
+        rgba(theme-color(light), 0.5) 20%,
+        theme-color(light) 100%
+      );
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(
+        to right,
+        rgba(theme-color(light), 0) 0%,
+        rgba(theme-color(light), 0.5) 20%,
+        theme-color(light) 100%
+      );
+    }
+
+    &--left-shadow {
+      &::before {
+        max-width: rem($spacing-xl * 2);
+      }
+    }
+
+    &--right-shadow {
+      &::after {
+        max-width: rem($spacing-xl * 2);
+      }
+    }
+  }
+}

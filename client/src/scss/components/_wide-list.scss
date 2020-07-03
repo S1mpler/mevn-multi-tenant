@@ -1,0 +1,35 @@
+.wide-list {
+  @extend %list-unstyled;
+
+  display: flex;
+  flex-direction: column;
+
+  @include media-breakpoint-up(lg) {
+    justify-content: flex-start;
+
+    flex: {
+      direction: row;
+      wrap: wrap;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: column;
+
+      &:not(:first-of-type) {
+        margin-left: rem($spacing-l);
+      }
+    }
+  }
+
+  &__label {
+    @include media-breakpoint-down(md) {
+      margin-right: rem($spacing-xs);
+    }
+  }
+}

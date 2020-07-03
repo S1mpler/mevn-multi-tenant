@@ -1,0 +1,43 @@
+.recalls {
+  display: flex;
+  min-height: rem(200px);
+  flex-direction: column;
+  margin-bottom: rem($spacing-l);
+  color: theme-color(light);
+  background-color: theme-color(primary);
+  border-radius: rem($border-radius);
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    margin-bottom: rem($spacing-l * 2);
+  }
+
+  &__warning {
+    display: flex;
+    min: {
+      width: rem(110px);
+      height: 100%;
+    }
+
+    align-items: center;
+    justify-content: center;
+    padding: rem($spacing-s);
+    background-color: color(dark-blue);
+    border-radius: rem($border-radius);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    padding: rem($spacing-base) rem($spacing-base) 0;
+  }
+
+  &__item {
+    padding-bottom: rem($spacing-base);
+
+    &:not(:first-of-type) {
+      padding-top: rem($spacing-base);
+      border-top: 1px solid theme-color(light);
+    }
+  }
+}

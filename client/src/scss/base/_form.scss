@@ -1,0 +1,36 @@
+::placeholder {
+  font-family: $placeholder-font-family;
+  color: $placeholder-color;
+  opacity: 1;
+}
+
+input,
+button,
+select,
+textarea {
+  padding: 0;
+  background: none;
+  border: 0;
+  appearance: none;
+  outline: 0;
+}
+
+button {
+  &:focus {
+    appearance: none;
+    outline: 0;
+  }
+}
+
+input {
+  [type='radio'] {
+    appearance: radio;
+  }
+}
+
+textarea {
+  resize: vertical;
+  border: 0;
+  appearance: none;
+  outline: 0;
+}

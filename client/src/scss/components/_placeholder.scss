@@ -1,0 +1,29 @@
+.placeholder {
+  background-color: gray-color(300);
+
+  &--small {
+    width: rem(90px);
+    height: rem(26px);
+  }
+
+  &--base {
+    width: rem(150px);
+    height: rem(36px);
+  }
+
+  &--stretch {
+    width: 100%;
+  }
+
+  &--round {
+    border-radius: rem(20px);
+  }
+
+  &__product {
+    height: rem(160px);
+  }
+
+  &__order {
+    height: rem(25px);
+  }
+}

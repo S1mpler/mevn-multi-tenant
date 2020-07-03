@@ -1,0 +1,218 @@
+%navigation-wrapper {
+  @include media-breakpoint-down(sm) {
+    position: fixed;
+    top: rem($header-mobile-height);
+    left: 0;
+    z-index: 101;
+    width: 80vw;
+    height: calc(100vh - #{$header-mobile-height});
+    padding: rem($spacing-base) rem($spacing-s);
+    cursor: auto;
+    background-color: gray-color(400);
+    transform: translate3d(100vw, 0, 0);
+    transition: $transition-base;
+
+    &.is-active {
+      transform: translate3d(20vw, 0, 0);
+    }
+  }
+}
+
+%navigation-wrapper-fw {
+  @include media-breakpoint-down(sm) {
+    width: 100vw;
+
+    &.is-active {
+      height: rem($spacing-xl * 2);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+.main-navigation {
+  @extend %navigation-wrapper;
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+    background-color: gray-color(400);
+  }
+
+  .container {
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+    }
+  }
+
+  &__chevron {
+    transform: rotate3d(0, 0, 0, 0);
+    transition: transform 0.15s ease-in-out;
+  }
+
+  &__main-item,
+  &__sub-item {
+    @include media-breakpoint-up(md) {
+      &:first-child {
+        .main-navigation__anchor {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  &__main-item {
+    @extend %nav-item;
+
+    &.is-active {
+      .main-navigation__chevron {
+        transform: rotate3d(0, 0, 1, 180deg);
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      position: relative;
+
+      &.is-active {
+        > .main-navigation__anchor,
+        > .main-navigation__pointer {
+          color: theme-color(primary);
+        }
+
+        .main-navigation__sub {
+          max-height: rem(200px);
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      &:hover {
+        .main-navigation__sub {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      > .main-navigation__anchor {
+        border-top: 1px solid gray-color(400);
+      }
+
+      &.is-active {
+        > .main-navigation__anchor {
+          color: theme-color(primary);
+        }
+      }
+
+      &:last-child {
+        margin-left: auto;
+
+        .main-navigation__anchor {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  &__item--has-sub {
+    @include media-breakpoint-up(md) {
+      &:hover {
+        > .main-navigation__anchor {
+          background-color: theme-color(light);
+        }
+
+        .main-navigation__chevron {
+          transform: rotate3d(0, 0, 1, 180deg);
+        }
+
+        > .main-navigation__anchor--is-active {
+          background-color: theme-color(light);
+        }
+
+        .main-navigation__chevron--is-active {
+          transform: rotate3d(0, 0, 1, 180deg);
+        }
+      }
+
+      &.is-active {
+        background-color: theme-color(light);
+
+        .main-navigation__sub {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__list {
+    @extend %list-unstyled;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+  }
+
+  &__sub {
+    transition: $transition-base;
+
+    @include media-breakpoint-down(sm) {
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      visibility: hidden;
+      background-color: theme-color(light);
+      border-bottom: rem(2px) solid gray-color(300);
+      opacity: 0;
+    }
+  }
+
+  &__sub-list {
+    @extend %list-unstyled;
+
+    justify-content: flex-start;
+
+    @include media-breakpoint-down(sm) {
+      .main-navigation__anchor {
+        padding-left: rem($spacing-s);
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+  }
+
+  &__anchor {
+    @extend %nav-anchor;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: rem($spacing-s) rem($spacing-base);
+    }
+  }
+
+  &__pointer {
+    position: absolute;
+
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      top: 0;
+      right: 0;
+      width: rem(50px);
+      height: rem(46px);
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+}

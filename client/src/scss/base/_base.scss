@@ -1,0 +1,71 @@
+::selection {
+  background-color: rgba(theme-color(primary), 20%);
+}
+
+body {
+  font-family: $font-family-sans-serif;
+  color: $body-color;
+  background-color: gray-color(300);
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  transition: $transition-base;
+}
+
+.link-underline-hover {
+  display: inline-flex;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  &--light {
+    color: theme-color(light);
+  }
+
+  &--primary {
+    color: theme-color(primary);
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  display: block;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+hr {
+  margin: {
+    top: $hr-margin-y;
+    bottom: $hr-margin-y;
+  }
+
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+.container {
+  max-width: 100%;
+
+  @include media-breakpoint-up(md) {
+    padding: {
+      right: rem($grid-gutter-width);
+      left: rem($grid-gutter-width);
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: map-get($container-max-widths, xl);
+  }
+}

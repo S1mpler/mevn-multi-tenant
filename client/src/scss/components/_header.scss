@@ -1,0 +1,49 @@
+.header {
+  background-color: theme-color(light);
+
+  @include media-breakpoint-down(sm) {
+    .container {
+      padding-right: 0;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    height: rem($header-mobile-height);
+    align-items: center;
+    justify-content: space-between;
+
+    @include media-breakpoint-up(md) {
+      height: rem($header-desktop-height);
+    }
+  }
+
+  &__sign {
+    width: rem(70px);
+  }
+
+  &__search {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+      min-width: rem(400px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      min-width: rem(600px);
+    }
+  }
+
+  &__items {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+}

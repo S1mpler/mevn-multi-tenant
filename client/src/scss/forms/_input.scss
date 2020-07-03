@@ -1,0 +1,128 @@
+$_input-height: 46px;
+
+%input {
+  position: relative;
+  width: 100%;
+  margin-bottom: rem($spacing-s);
+  padding: rem($spacing-xs) rem($spacing-s);
+  background-color: theme-color(light);
+  border: 1px solid gray-color(200);
+  border-radius: $border-radius;
+}
+
+[type='email'],
+[type='text'],
+[type='textarea'],
+[type='password'],
+[type='date'],
+textarea,
+select {
+  @extend %input;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  height: rem($_input_height);
+  background: theme-color(light);
+
+  input {
+    padding-right: rem($_input_height * 2);
+  }
+
+  &__clean-input {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: rem($_input-height);
+    width: rem($_input-height);
+    height: rem($_input-height);
+    align-items: center;
+    justify-content: center;
+    color: gray-color(100);
+    transition: $transition-base;
+
+    &:hover {
+      color: gray-color(50);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: rem($_input-height);
+    height: rem($_input-height);
+    align-items: center;
+    justify-content: center;
+    color: theme-color(primary);
+    transition: $transition-base;
+    border: {
+      top-right-radius: rem($border-radius);
+      bottom-right-radius: rem($border-radius);
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: rem($_input-height);
+      z-index: 1;
+      width: 1px;
+      height: 60%;
+      content: '';
+      border-right: 1px solid gray-color(200);
+      opacity: 1;
+      transform: translateY(-50%);
+      transition: $transition-base;
+    }
+
+    &:hover {
+      color: theme-color(light);
+      background-color: theme-color(primary);
+
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.input-expand-wrapper {
+  position: relative;
+  background: theme-color(light);
+
+  input,
+  select {
+    z-index: 2;
+    padding-right: rem($spacing-xl);
+    cursor: pointer;
+    background: none;
+  }
+
+  &__arrow {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: rem($_input-height);
+    height: rem($_input-height);
+    align-items: center;
+    justify-content: center;
+    color: theme-color(primary);
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: rem($spacing-l);
+      z-index: 1;
+      width: 1px;
+      height: 60%;
+      content: '';
+      border-right: 1px solid gray-color(200);
+      transform: translateY(-50%);
+    }
+  }
+}

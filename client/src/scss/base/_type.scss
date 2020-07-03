@@ -1,0 +1,39 @@
+// Headings
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font: {
+    family: $headings-font-family;
+    weight: $headings-font-weight;
+  }
+
+  line-height: 1.2;
+  color: $headings-color;
+}
+
+@for $i from 1 through 6 {
+  .h#{$i},
+  h#{$i} {
+    @include get-font-size(#{h#{$i}});
+  }
+}
+
+// Emphasis
+
+small,
+.small {
+  font: {
+    size: $small-font-size;
+    weight: $font-weight-normal;
+  }
+}

@@ -1,0 +1,54 @@
+.overlay {
+  position: fixed;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+
+  &--light {
+    color: theme-color(dark);
+    background: theme-color(light);
+  }
+
+  &--dark {
+    color: theme-color(light);
+    background: theme-color(dark);
+  }
+
+  &__header {
+    position: fixed;
+    top: 0;
+    z-index: 102;
+    width: 100%;
+    height: rem($header-mobile-height);
+    justify-content: space-between;
+    margin: 0;
+    color: theme-color(dark);
+    background: theme-color(light);
+
+    @include media-breakpoint-up(md) {
+      height: rem($header-desktop-height);
+    }
+  }
+
+  &__header-items {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+
+    > * {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__content {
+    display: block;
+    width: 100%;
+    margin-top: rem($header-mobile-height * 1.5);
+
+    @include media-breakpoint-up(md) {
+      margin-top: rem($header-desktop-height * 1.5);
+    }
+  }
+}

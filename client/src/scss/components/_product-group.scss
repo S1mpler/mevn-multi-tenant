@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid: {
+    template-columns: repeat(1, 1fr);
+    gap: rem($grid-gutter-width);
+  }
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(auto-fill, minmax(rem(210px), 1fr));
+  }
+}

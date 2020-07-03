@@ -6,6 +6,7 @@ import * as cookieParser from 'cookie-parser';
 import * as http from 'http';
 
 import { DatabaseConnection } from './config/database';
+import { routes } from './router/router';
 
 const app = express();
 
@@ -30,6 +31,9 @@ app.use(
     });
   }
 );
+
+// Establish routes
+app.use('/', routes());
 
 // Connect to database
 new DatabaseConnection().connect({
