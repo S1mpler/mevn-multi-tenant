@@ -10,12 +10,15 @@ export interface IUser extends Document {
   organizationId: IOrganization['_id'];
 }
 
-const UserSchema: Schema = new Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true, index: { unique: true } },
-  passwordHash: { type: String, required: true },
-  organizationId: { type: Schema.Types.ObjectId, required: false },
-});
+const UserSchema: Schema = new Schema(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, index: { unique: true } },
+    passwordHash: { type: String, select: false, required: true },
+    organizationId: { type: Schema.Types.ObjectId, required: false },
+  },
+  { versionKey: false }
+);
 
 export default model<IUser>('User', UserSchema);

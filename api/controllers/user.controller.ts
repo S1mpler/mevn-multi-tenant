@@ -14,7 +14,8 @@ export class UserController {
   };
 
   public getOne = async (request: Request, response: Response) => {
-    const result = await this.user.getUserById('111');
+    const userId = request.params.id;
+    const result = await this.user.getUserById(userId);
     response.json(result);
   };
 }

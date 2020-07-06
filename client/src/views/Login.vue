@@ -1,11 +1,11 @@
 <template>
   <section class="section-full-screen login">
-  <img class="login__image" src="../assets/img/login.jpg" />
+  <!-- <img class="login__image" src="../assets/img/login.jpg" /> -->
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-5 offset-md-1">
         <div class="login__card">
-          <form @submit="login">
+          <form @submit.prevent="login">
             <div class="form-row">
               <label>Email</label>
               <input
@@ -49,8 +49,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class Login extends Vue {
   // @Prop() private msg!: string;
-  login(e): void {
-    e.preventDefault();
+  login(): void {
     this.$router.push({ path: 'dashboard' });
   }
 }

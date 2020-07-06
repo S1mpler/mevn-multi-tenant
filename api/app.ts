@@ -37,9 +37,7 @@ app.use('/', routes());
 
 // Connect to database
 new DatabaseConnection().connect({
-  dbHost: process.env.DB_HOST,
-  dbPort: process.env.DB_PORT,
-  dbName: process.env.DB_NAME,
+  database: process.env.MONGO_URL,
 });
 
 // Start the server

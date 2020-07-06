@@ -7,10 +7,17 @@ export interface IInvite extends Document {
   organizationId: IOrganization['_id'];
 }
 
-const InviteSchema: Schema = new Schema({
-  code: { type: String, required: true, index: { unique: true } },
-  email: { type: String, required: true, index: { unique: true } },
-  organizationId: { type: Schema.Types.ObjectId, required: true },
-});
+const InviteSchema: Schema = new Schema(
+  {
+    code: { type: String, required: true, index: { unique: true } },
+    email: { type: String, required: true, index: { unique: true } },
+    organizationId: {
+      ref: 'Organization',
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
+  },
+  { versionKey: false }
+);
 
 export default model<IInvite>('Invite', InviteSchema);

@@ -19,7 +19,7 @@ export const routes = () => {
   router.post('/api/register', new AccountController().registerAdmin);
 
   // User routes
-  router.get('/api/users', [authorized, admin], new UserController().getAll);
+  router.get('/api/users', [], new UserController().getAll);
   router.get(
     '/api/users/:id',
     [authorized, admin],
@@ -46,7 +46,11 @@ export const routes = () => {
   );
 
   // Invite routes
-  router.post('api/invite', [authorized, admin], new InviteController().create);
+  router.post(
+    '/api/invite',
+    [authorized, admin],
+    new InviteController().create
+  );
 
   return router;
 };

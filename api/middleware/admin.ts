@@ -8,7 +8,9 @@ export default async (request: Request, response: Response, next: any) => {
   const isAdmin = await account.isAdmin(userId);
 
   if (!isAdmin) {
-    response.status(403).send();
+    response.status(403).json({
+      error: 'You are not an admin',
+    });
   }
 
   next();

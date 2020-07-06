@@ -1,17 +1,40 @@
 import * as jwt from 'jsonwebtoken';
 import SessionSchema from '../schemas/session.schema';
 import UserSchema from '../schemas/user.schema';
+import { Account } from './account';
 
 const tokenSecret = 'my-secret';
 
 export class Session {
+  private account: Account;
+
+  constructor() {
+    this.account = new Account();
+  }
+
   public async create(credentials: { email: string; password: string }) {
     if (!credentials || !credentials.email || !credentials.password) {
       throw Error('Wrong request');
     }
 
     // get user by email
-    const user = await UserSchema.findOne({ email: credentials.email });
+    let user;
+    try {
+      user = await UserSchema.findOne({ email: credentials.email })
+        .select('+passwordHash')
+        .exec();
+    } catch (e) {
+      throw Error('No such user');
+    }
+
+    const isMatch = this.account.comparePasswords(
+      credentials.password,
+      user.passwordHash
+    );
+
+    if (!isMatch) {
+      throw Error('Email and passwords do not match!');
+    }
 
     try {
       await SessionSchema.deleteOne({ userId: user._id }).exec();

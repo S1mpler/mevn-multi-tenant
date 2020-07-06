@@ -1,13 +1,11 @@
 import * as mongoose from 'mongoose';
 
 export class DatabaseConnection {
-  public connect({ dbHost, dbPort, dbName }) {
+  public connect({ database }) {
     mongoose
-      .connect(`mongodb://${dbHost + ':' + dbPort}/${dbName}`)
+      .connect(database)
       .then(() => {
-        console.log(
-          'Database connection successful to ' + dbHost + ':' + dbPort
-        );
+        console.log('Database connection successful to ' + database);
       })
       .catch((err) => {
         console.error('Database connection error');

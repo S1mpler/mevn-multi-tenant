@@ -1,9 +1,7 @@
-// import * as bcrypt from 'bcrypt';
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 import UserSchema, { IUser } from '../schemas/user.schema';
 import AdminSchema from '../schemas/admin.schema';
-// import { bcrypt } from 'bcrypt';
 
 export class Account {
   public async createAdminAccount(user: IUser) {
@@ -17,7 +15,7 @@ export class Account {
   }
 
   public async createUserAccount(user: IUser) {
-    user.passwordHash = await this.hashPassword(user.password);
+    user.passwordHash = this.hashPassword(user.password);
     const userAccount = await new UserSchema(user).save();
     return userAccount;
   }
@@ -28,11 +26,13 @@ export class Account {
     return true;
   }
 
-  private async hashPassword(password: string) {
-    return await bcrypt.hash(password, 10);
+  public comparePasswords(targetPassword: string, hash: string) {
+    return bcrypt.compareSync(targetPassword, hash);
   }
 
-  private async comparePasswords(targetPassword: string, hash: string) {
-    return await bcrypt.compare(targetPassword, hash);
+  private hashPassword(password: string) {
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    return hash;
   }
 }

@@ -16,7 +16,9 @@ export class SessionController {
         .cookie('token', sessionToken, { maxAge: 86400 })
         .json(user);
     } catch (err) {
-      response.status(404).send('User not found');
+      response.status(404).json({
+        error: 'Email and password do not match',
+      });
     }
   };
 
@@ -25,7 +27,9 @@ export class SessionController {
       const sessionToken = await this.session.remove(request['auth']);
       response.status(200).clearCookie('token').send();
     } catch (err) {
-      response.status(404).send();
+      response.status(404).json({
+        error: 'You are not authorized',
+      });
     }
   };
 }

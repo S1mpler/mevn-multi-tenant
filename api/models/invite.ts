@@ -7,4 +7,8 @@ export class Invite {
 
     return await new InviteSchema({ code, organizationId, email }).save();
   }
+
+  public async getInvite(code: string) {
+    return await InviteSchema.findOne({ code });
+  }
 }

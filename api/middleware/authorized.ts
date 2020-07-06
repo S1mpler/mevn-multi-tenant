@@ -7,13 +7,17 @@ export default async (request: Request, response: Response, next: any) => {
   const { token } = request.cookies;
 
   if (!token) {
-    response.status(403).send('Authorization required!!!');
+    response.status(403).json({
+      error: 'Authorization required',
+    });
   }
 
   const userId = await session.validate(token);
 
   if (!userId) {
-    response.status(403).send();
+    response.status(403).json({
+      error: 'Token is not valid',
+    });
   }
 
   request['auth'] = { userId };

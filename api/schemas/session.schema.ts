@@ -6,13 +6,16 @@ export interface ISession extends Document {
   userId: IUser['_id'];
 }
 
-const SessionSchema: Schema = new Schema({
-  // token: { type: String, required: true, index: { unique: true } },
-  userId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    index: { unique: true },
+const SessionSchema: Schema = new Schema(
+  {
+    // token: { type: String, required: true, index: { unique: true } },
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      index: { unique: true },
+    },
   },
-});
+  { versionKey: false }
+);
 
 export default model<ISession>('Session', SessionSchema);
